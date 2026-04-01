@@ -1,0 +1,228 @@
+.container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  background: #1e293b;
+  color: #ffffff;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #4facfe;
+}
+
+.welcome-section {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.welcome-text {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #334155;
+  margin: 10px 0;
+  border: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 14px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.sidebar ul li:hover {
+  background: #334155;
+  color: #4facfe;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.main {
+  flex: 1;
+  padding: 30px 40px;
+  color: #f1f5f9;
+  overflow-y: auto;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+}
+
+.header-section h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.sub-heading {
+  color: #cbd5e1;
+  margin-bottom: 30px;
+}
+
+.cards-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.card {
+  flex: 1 1 220px;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.total-card {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.stats-card {
+  background: linear-gradient(135deg, #fe6b8b, #ff8e53);
+}
+
+.table-section {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+}
+
+thead {
+  background: #0f172a;
+}
+
+tbody tr:hover {
+  background: #334155;
+}
+
+.chart-container {
+  margin-top: 30px;
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+.pie-wrapper {
+  max-width: 350px;
+  margin: auto;
+}
+.default-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.chart-title {
+  margin-bottom: 20px;
+  color: #000;
+}
+
+
+.chart-box {
+  width: 400px;
+  height: 400px;
+}
+.charts-section {
+  margin-top: 40px;
+}
+
+.section-title {
+  color: #67e8f9;
+  font-size: 22px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 15px #67e8f9;
+  letter-spacing: 0.5px;
+}
+
+.charts-row {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.chart-card {
+  background: rgba(30, 41, 55, 0.85);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #67e8f9;
+  box-shadow: 
+    0 0 15px rgba(103, 232, 249, 0.3),
+    inset 0 0 8px rgba(103, 232, 249, 0.1);
+  flex: 1;
+  min-height: 420px;
+  transition: all 0.3s ease;
+}
+
+.chart-card.full-width {
+  width: 100%;
+  flex: none;
+}
+
+.chart-card h3 {
+  margin: 0 0 22px 0;
+  font-size: 18px;
+  color: #67e8f9;
+  text-shadow: 0 0 12px #67e8f9;
+  font-weight: 600;
+}
+
+canvas {
+  width: 100% !important;
+  height: 320px !important;
+}
+
+.chart-card:hover {
+  box-shadow: 
+    0 0 30px rgba(103, 232, 249, 0.5),
+    inset 0 0 12px rgba(103, 232, 249, 0.2);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 1100px) {
+  .charts-row {
+    flex-direction: column;
+  }
+}

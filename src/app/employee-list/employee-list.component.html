@@ -1,0 +1,88 @@
+<div class="employee-page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h2>Employee List</h2>
+
+    <input 
+      type="text" 
+      placeholder="Search employee..." 
+      [(ngModel)]="searchText" 
+      (input)="applyFilter()" 
+      class="search-box" 
+    />
+
+    <button class="add-btn" *ngIf="isAdmin" (click)="openAddModal()">
+      + Add Employee
+    </button>
+  </div>
+
+  <!-- MODAL -->
+  <app-employee-modal
+    *ngIf="showModal"
+    [employeeData]="selectedEmployee"
+    (onClose)="closeModal()"
+    (onSave)="handleSave($event)">
+  </app-employee-modal>
+
+  <!-- DATA GRID -->
+  <div class="table-container">
+
+    <table mat-table [dataSource]="dataSource" matSort class="employee-table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let emp">{{ emp.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First</th>
+        <td mat-cell *matCellDef="let emp">{{ emp.first_name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last</th>
+        <td mat-cell *matCellDef="let emp">{{ emp.last_name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let emp">{{ emp.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <td mat-cell *matCellDef="let emp">{{ emp.phone }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Dept</th>
+        <td mat-cell *matCellDef="let emp">{{ emp.department }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="salary">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Salary</th>
+        <td mat-cell *matCellDef="let emp">₹ {{ emp.salary }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let emp" class="action-cell">
+          <div class="action-wrapper" *ngIf="isAdmin">
+            <button class="edit-btn" (click)="editEmployee(emp)">Update</button>
+            <button class="delete-btn" (click)="confirmDelete(emp.id)">🗑</button>
+          </div>
+          <span *ngIf="!isAdmin">-</span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+
+  </div>
+
+</div>

@@ -1,0 +1,109 @@
+<div class="container">
+
+
+  <div class="sidebar">
+    <h2>EMS</h2>
+
+    <div class="welcome-section">
+      <p class="welcome-text">Welcome, {{ role }}</p>
+    </div>
+
+    <hr class="divider">
+
+    <ul>
+      <li (click)="goToDashboard()">
+        <span class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10-18v10h8V3h-8zm0 18h8v-6h-8v6z"/>
+          </svg>
+        </span>
+        Dashboard
+      </li>
+
+      <li (click)="goToAnalytics()">
+        <span class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 17h3v-7H3v7zm5 0h3v-4H8v4zm5 0h3v-10h-3v10zm5 0h3v-2h-3v2z"/>
+          </svg>
+        </span>
+        Analytics
+      </li>
+
+      <li (click)="goToEmployees()">
+        <span class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </span>
+        Employee Details
+      </li>
+
+      <li (click)="logout()">
+        <span class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+          </svg>
+        </span>
+        Logout
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="main">
+
+    <!--  SHOW DASHBOARD -->
+    <ng-container *ngIf="showDashboard">
+      <div class="header-section">
+        <h1>Dashboard</h1>
+        <p class="sub-heading">Overview of your employees and system stats</p>
+      </div>
+
+      <!--  CARDS -->
+      <div class="cards-row">
+        <div class="card total-card">
+          <h3>Total Employees</h3>
+          <h1>{{ totalEmployees }}</h1>
+        </div>
+
+        <div class="card stats-card">
+          <h3>System Usage</h3>
+          <h1>{{ loginsToday }}</h1>
+          <p>Logins Today</p>
+        </div>
+      </div>
+
+      <!--  RECENT ACTIVITY -->
+      <div class="table-section">
+        <h2>Recent Activity</h2>
+
+        <table *ngIf="recentActivities && recentActivities.length > 0; else noData">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Action</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let activity of recentActivities">
+              <td>{{ activity.name }}</td>
+              <td>{{ activity.action }}</td>
+              <td>{{ activity.time | date:'short' }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ng-template #noData>
+          <p style="color: #aaa;">No recent activity found</p>
+        </ng-template>
+      </div>
+    </ng-container>
+
+    <!--  SHOW ANALYTICS -->
+    <ng-container *ngIf="showAnalytics">
+      <app-analytics></app-analytics>
+    </ng-container>
+
+  </div>
+</div>

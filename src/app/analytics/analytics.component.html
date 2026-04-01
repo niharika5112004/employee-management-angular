@@ -1,0 +1,31 @@
+<div class="analytics-container">
+  <h1>Analytics Dashboard</h1>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Employees by Designation</h3>
+      <canvas #pieChart baseChart 
+              [data]="designationData" 
+              [options]="designationOptions" 
+              [type]="'pie'"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Salary by Department</h3>
+      <canvas #barChart baseChart 
+              [data]="salaryData" 
+              [options]="salaryOptions" 
+              [type]="'bar'"></canvas>
+    </div>
+
+    <div class="card full">
+      <h3>Employee Growth</h3>
+      <canvas #lineChart baseChart 
+              [data]="growthData" 
+              [options]="growthOptions" 
+              [type]="'line'"></canvas>
+    </div>
+
+  </div>
+</div>

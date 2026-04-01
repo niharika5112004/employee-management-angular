@@ -1,0 +1,127 @@
+/* Full Screen Dark Neon Background */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Login Card - Bigger & Dark */
+.login-card {
+  background: #1e293b;
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7),
+              0 0 30px rgba(79, 172, 254, 0.3);
+  text-align: center;
+  color: #f1f5f9;
+}
+
+/* Title */
+.login-card h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* Subtitle */
+.subtitle {
+  color: #94a3b8;
+  font-size: 17px;
+  margin-bottom: 35px;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 22px;
+}
+
+/* Inputs - Bigger & Neon */
+input {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 2px solid #334155;
+  background: #334155;
+  color: #f1f5f9;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.3);
+  background: #1e293b;
+}
+
+/* Role Selection - Bigger & Styled */
+.role-select {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 25px 0 35px;
+}
+
+.role-select label {
+  font-size: 17px;
+  color: #f1f5f9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Make Radio Buttons Neon & Bigger */
+.role-select input[type="radio"] {
+  accent-color: #4facfe;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Login Button - Neon Gradient */
+button {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.6);
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+}
+
+/* Error Message */
+.error {
+  color: #f87171;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .login-card {
+    padding: 40px 25px;
+  }
+  
+  .role-select {
+    gap: 25px;
+  }
+}

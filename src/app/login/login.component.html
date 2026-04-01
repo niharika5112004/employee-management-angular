@@ -1,0 +1,57 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Employee Management</h2>
+    <p class="subtitle">Login to continue</p>
+
+    <form (ngSubmit)="onLogin()">
+      
+      <div class="input-group">
+        <input 
+          type="email" 
+          placeholder="Email" 
+          [(ngModel)]="email" 
+          name="email" 
+          required 
+        />
+      </div>
+
+      <div class="input-group">
+        <input 
+          type="password" 
+          placeholder="Password" 
+          [(ngModel)]="password" 
+          name="password" 
+          required 
+        />
+      </div>
+
+      <!-- ✅ ROLE SELECTION FIXED -->
+      <div class="role-select">
+        <label>
+          <input 
+            type="radio" 
+            [(ngModel)]="role" 
+            name="role" 
+            value="admin" 
+          />
+          Admin
+        </label>
+
+        <label>
+          <input 
+            type="radio" 
+            [(ngModel)]="role" 
+            name="role" 
+            value="user" 
+            checked
+          />
+          User
+        </label>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div>
+</div>

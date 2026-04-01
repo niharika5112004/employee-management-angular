@@ -1,0 +1,26 @@
+{
+  "employees": [
+    {
+      "name": "emp01",
+      "password": "12345678",
+      "email": "emp01@gmail.com",
+      "role": "software tester",
+      "id": "8tj9klz-2tw"
+    },
+    {
+      "name": "emp02",
+      "password": "987654321",
+      "email": "emp02@gmail.com",
+      "role": "SDE",
+      "id": "6OBSxo7u3Ng"
+    },
+    {
+      "name": "emp03",
+      "password": "1357913579",
+      "email": "emp03@gmail.com",
+      "role": "accountant",
+      "id": "kTZpXktru_I"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,38 @@
+<div class="modal-backdrop">
+  <div class="modal-card">
+    <h2>{{ employeeData ? 'Update Employee' : 'Add Employee' }}</h2>
+
+    <form [formGroup]="profileForm" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <input type="text" formControlName="first_name" placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="last_name" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <input type="email" formControlName="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="phone" placeholder="Phone">
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="department" placeholder="Department">
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="designation" placeholder="Designation">
+      </div>
+      <div class="form-group">
+        <input type="number" formControlName="salary" placeholder="Salary">
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="save-btn">
+          {{ employeeData ? 'Update' : 'Add' }}
+        </button>
+        <button type="button" class="cancel-btn" (click)="closeModal()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

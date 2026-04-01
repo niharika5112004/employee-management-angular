@@ -1,0 +1,66 @@
+.analytics-container {
+  padding: 20px;
+  color: white;
+}
+
+.analytics-container h1 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.full {
+  grid-column: span 2;
+}
+
+.card {
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  padding: 20px;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1px;
+  background: linear-gradient(120deg, #00F5D4, transparent, #3A86FF);
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(0, 245, 212, 0.4);
+}
+
+h3 {
+  margin-bottom: 12px;
+  color: #00F5D4;
+}
+
+/* ✅ FIXED CANVAS STYLING - This was breaking tooltips */
+.card canvas {
+  width: 100% !important;
+  height: auto !important;           /* Let Chart.js control height */
+  max-height: 320px;                 /* Safe maximum height */
+  display: block;
+  margin: 0 auto;
+}
+
+/* Optional: Nice hover glow effect on canvas */
+.card:hover canvas {
+  filter: drop-shadow(0 0 12px rgba(0, 245, 212, 0.6));
+}
