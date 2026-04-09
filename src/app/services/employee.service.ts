@@ -1,69 +1,75 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Subject, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  private baseUrl = 'http://localhost:3000';
+  // ✅ UPDATED BACKEND URL (Render)
+  private API = 'https://angular-backend-8p8x.onrender.com';
 
-  private refreshSource = new Subject<void>();
-  refresh$ = this.refreshSource.asObservable();
+  private refreshNeeded = new Subject<void>();
+  refresh$ = this.refreshNeeded.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  // 🔄 Refresh trigger
-  triggerRefresh(): void {
-    this.refreshSource.next();
+  private getHeaders() {
+    const token = localStorage.getItem('token');
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      })
+    };
   }
 
-  // ---------------- EMPLOYEE APIs ----------------
-  getEmployees(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/employees`);
+  // ✅ LOGIN METHOD ADDED
+  login(data: any) {
+    return this.http.post(`${this.API}/login`, data);
   }
 
-  getEmployeeCount(): Observable<{ count: number }> {
-    return this.http.get<{ count: number }>(`${this.baseUrl}/employees/count`);
+  getEmployeeCount() {
+    return this.http.get<any>(`${this.API}/employees/count`, this.getHeaders());
   }
 
-  getLoginCount(): Observable<{ count: number }> {
-    return this.http.get<{ count: number }>(`${this.baseUrl}/logins/count`);
+  getLoginsToday() {
+    return this.http.get<any>(`${this.API}/employees/logins-today`, this.getHeaders());
   }
 
-  getRecentActivity(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/recent-activity`);
+  getRecentActivity() {
+    return this.http.get<any[]>(`${this.API}/employees/recent-activity`, this.getHeaders());
   }
+
+  getDesignationStats() {
+    return this.http.get<any[]>(`${this.API}/employees/designation-stats`, this.getHeaders());
+  }
+
+  getDepartmentSalaryStats() {
+    return this.http.get<any[]>(`${this.API}/employees/department-salaries`, this.getHeaders());
+  }
+
   getEmployeeGrowth() {
-    return this.http.get<any[]>(`${this.baseUrl}/employees/growth`);
+    return this.http.get<any[]>(`${this.API}/employees/growth`, this.getHeaders());
   }
 
-  addEmployee(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/employees`, data);
+  getEmployees() {
+    return this.http.get<any[]>(`${this.API}/employees`, this.getHeaders());
   }
 
-  updateEmployee(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/employees/${id}`, data);
+  addEmployee(data: any) {
+    return this.http.post(`${this.API}/employees`, data, this.getHeaders());
   }
 
-  deleteEmployee(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/employees/${id}`);
+  updateEmployee(id: number, data: any) {
+    return this.http.put(`${this.API}/employees/${id}`, data, this.getHeaders());
   }
 
-  // ---------------- ANALYTICS APIs ----------------
-
-  // ✅ Pie Chart: designation count
-  getDesignationStats(): Observable<{ designation: string; count: number }[]> {
-    return this.http.get<{ designation: string; count: number }[]>(
-      `${this.baseUrl}/employees/designation-stats`
-    );
+  deleteEmployee(id: number) {
+    return this.http.delete(`${this.API}/employees/${id}`, this.getHeaders());
   }
 
-  // ✅ Bar Chart: avg salary per department
-  getDepartmentSalaryStats(): Observable<{ department: string; avgSalary: number }[]> {
-    return this.http.get<{ department: string; avgSalary: number }[]>(
-      `${this.baseUrl}/employees/department-salaries`
-    );
+  triggerRefresh() {
+    this.refreshNeeded.next();
   }
 }

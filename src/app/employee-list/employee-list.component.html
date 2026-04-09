@@ -2,6 +2,10 @@
 
   <!-- HEADER -->
   <div class="header">
+
+    <!-- 🔙 Back Button -->
+    <button class="back-btn" (click)="goBack()">← Back</button>
+
     <h2>Employee List</h2>
 
     <input 
@@ -12,6 +16,7 @@
       class="search-box" 
     />
 
+    <!-- Add Employee button (admin only) -->
     <button class="add-btn" *ngIf="isAdmin" (click)="openAddModal()">
       + Add Employee
     </button>
@@ -27,7 +32,6 @@
 
   <!-- DATA GRID -->
   <div class="table-container">
-
     <table mat-table [dataSource]="dataSource" matSort class="employee-table">
 
       <ng-container matColumnDef="id">
@@ -78,11 +82,8 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
     </table>
 
-    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
-
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,20]"></mat-paginator>
   </div>
-
 </div>

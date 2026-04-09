@@ -1,0 +1,93 @@
+.add-user-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+
+  /* LIGHT MODE (unchanged) */
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+h2 {
+  text-align: center;
+}
+@media (max-width: 768px) {
+
+  .form-container {
+    width: 95% !important;
+    padding: 15px;
+  }
+
+  .form-row {
+    flex-direction: column !important;
+    gap: 10px;
+  }
+
+  input, select {
+    width: 100%;
+  }
+
+}
+
+/* ========================= */
+/* 🌙 DARK MODE (FORCED FIX) */
+/* ========================= */
+
+:host ::ng-deep .dark-mode .add-user-container {
+  background-color: white !important;
+  border: 1px solid #444 !important;
+  color: white !important;
+}
+
+:host ::ng-deep .dark-mode label {
+  color: white !important;
+}
+
+:host ::ng-deep .dark-mode input,
+:host ::ng-deep .dark-mode select {
+  background-color: #e6e6e6 !important; /* light grey fields */
+  color: black !important;              /* 👈 THIS controls dropdown text */
+  border: 1px solid #ccc !important;
+}
+
+/* Dropdown options (admin/user) */
+:host ::ng-deep .dark-mode select option {
+  color: black !important;
+}
+
+/* Placeholder */
+:host ::ng-deep .dark-mode input::placeholder {
+  color: #ffffff !important;
+}
+
+button {
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #125ea2;
+}

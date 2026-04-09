@@ -1,10 +1,11 @@
 <div class="login-container">
+
   <div class="login-card">
     <h2>Employee Management</h2>
     <p class="subtitle">Login to continue</p>
 
-    <form (ngSubmit)="onLogin()">
-      
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+
       <div class="input-group">
         <input 
           type="email" 
@@ -12,7 +13,12 @@
           [(ngModel)]="email" 
           name="email" 
           required 
+          class="theme-input"
+          #emailInput="ngModel"
         />
+        <p class="error" *ngIf="emailInput.invalid && emailInput.touched">
+          Email is required
+        </p>
       </div>
 
       <div class="input-group">
@@ -22,36 +28,22 @@
           [(ngModel)]="password" 
           name="password" 
           required 
+          class="theme-input"
+          #passwordInput="ngModel"
         />
+        <p class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
+          Password is required
+        </p>
       </div>
 
-      <!-- ✅ ROLE SELECTION FIXED -->
-      <div class="role-select">
-        <label>
-          <input 
-            type="radio" 
-            [(ngModel)]="role" 
-            name="role" 
-            value="admin" 
-          />
-          Admin
-        </label>
+      <button type="submit" class="theme-btn" [disabled]="loginForm.invalid">
+        Login
+      </button>
+      
 
-        <label>
-          <input 
-            type="radio" 
-            [(ngModel)]="role" 
-            name="role" 
-            value="user" 
-            checked
-          />
-          User
-        </label>
-      </div>
-
-      <button type="submit">Login</button>
     </form>
 
     <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
   </div>
+
 </div>

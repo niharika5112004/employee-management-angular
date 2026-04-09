@@ -1,212 +1,58 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f4f6f9;
-    /* soft professional background */
-    margin: 0;
-    padding: 0;
+/* Toggle button styling */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 
-/* HEADER */
-.form-title {
-    text-align: center;
-    color: #222;
-    margin-top: 30px;
-    font-size: 32px;
-    font-weight: 600;
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 28px;
 }
 
-/* FORM CARD */
-form {
-    background: #ffffff;
-    max-width: 700px;
-    margin: 30px auto;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+.switch input {
+  display: none;
 }
 
-/* ROW STRUCTURE */
-.row {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #2c2f41;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
 }
 
-.row div {
-    flex: 1;
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  transition: 0.4s;
+  border-radius: 50%;
 }
 
-/* INPUTS */
-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: 0.3s;
+input:checked + .slider::before {
+  transform: translateX(32px);
 }
 
-input:focus {
-    border-color: #333;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    outline: none;
+/* Icons */
+.icon-moon, .icon-sun {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  pointer-events: none;
 }
 
-/* ERROR TEXT */
-.error {
-    color: #e74c3c;
-    font-size: 12px;
-    margin-top: 3px;
-}
-
-/* BUTTON */
-button[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background: #222;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: 0.3s;
-}
-
-button[type="submit"]:hover {
-    background: #000;
-}
-
-button:disabled {
-    background: #bbb;
-}
-
-/* TABLE CONTAINER (AUTO SCROLL) */
-.table-container {
-    width: 95%;
-    margin: 30px auto;
-    max-height: 350px;
-    /* 🔥 SCROLL ENABLED */
-    overflow-y: auto;
-    background: white;
-    border-radius: 10px;
-    padding-bottom: 20px;
-    /* ✔ requested */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-/* TABLE */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-/* STICKY HEADER */
-th {
-    position: sticky;
-    top: 0;
-    background: #111;
-    color: white;
-    padding: 12px;
-    font-weight: 500;
-}
-
-/* TABLE DATA */
-td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-}
-
-/* ROW HOVER */
-tr:hover {
-    background: #f9f9f9;
-}
-
-/* ACTION BUTTONS */
-td button {
-    padding: 6px 12px;
-    margin: 3px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-td button:first-child {
-    background: #2c3e50;
-    color: white;
-}
-
-td button:first-child:hover {
-    background: #1a252f;
-}
-
-td button:last-child {
-    background: #e74c3c;
-    color: white;
-}
-
-td button:last-child:hover {
-    background: #c0392b;
-}
-
-/* LOGOUT BUTTON */
-.logout-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 8px 14px;
-    background: #111;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.logout-btn:hover {
-    background: #000;
-}
-
-/* SECTION TITLE */
-.section-title {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-/* SEARCH BAR */
-.table-controls {
-    width: 95%;
-    margin: 10px auto;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.table-controls input {
-    padding: 8px;
-    width: 250px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-/* SPINNER */
-.spinner-container {
-    display: flex;
-    justify-content: center;
-    margin: 30px;
-}
-
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 5px solid #ccc;
-    border-top: 5px solid #333;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
+.icon-moon { left: 8px; }
+.icon-sun { right: 8px; }

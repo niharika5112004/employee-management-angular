@@ -1,6 +1,5 @@
 <div class="container">
 
-
   <div class="sidebar">
     <h2>EMS</h2>
 
@@ -12,54 +11,53 @@
 
     <ul>
       <li (click)="goToDashboard()">
-        <span class="icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10-18v10h8V3h-8zm0 18h8v-6h-8v6z"/>
-          </svg>
-        </span>
+        <span class="icon">🏠</span>
         Dashboard
       </li>
 
       <li (click)="goToAnalytics()">
-        <span class="icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3 17h3v-7H3v7zm5 0h3v-4H8v4zm5 0h3v-10h-3v10zm5 0h3v-2h-3v2z"/>
-          </svg>
-        </span>
+        <span class="icon">📊</span>
         Analytics
       </li>
 
       <li (click)="goToEmployees()">
-        <span class="icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-          </svg>
-        </span>
+        <span class="icon">👥</span>
         Employee Details
       </li>
 
+      <!-- ✅ ADDED: Only visible to admin -->
+      <li *ngIf="isAdmin" (click)="goToAddUser()">
+        <span class="icon">➕</span>
+        Add User
+      </li>
+
       <li (click)="logout()">
-        <span class="icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
-          </svg>
-        </span>
+        <span class="icon">🚪</span>
         Logout
       </li>
     </ul>
   </div>
 
-
   <div class="main">
 
-    <!--  SHOW DASHBOARD -->
-    <ng-container *ngIf="showDashboard">
+    <ng-container *ngIf="showWelcome">
+      <div class="welcome-home">
+        <img src="welcome.jpg" class="bg-image" />
+        <div class="overlay-content">
+          <h1>Welcome to EMS Dashboard 👋</h1>
+          <p>
+            Manage employee records, track system activity, and explore analytics — all from one place.
+          </p>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="showDashboard && !showWelcome">
       <div class="header-section">
         <h1>Dashboard</h1>
         <p class="sub-heading">Overview of your employees and system stats</p>
       </div>
 
-      <!--  CARDS -->
       <div class="cards-row">
         <div class="card total-card">
           <h3>Total Employees</h3>
@@ -73,26 +71,19 @@
         </div>
       </div>
 
-      <!--  RECENT ACTIVITY -->
       <div class="table-section">
-        <h2>Recent Activity</h2>
+        <h2>Recent Activity Timeline</h2>
 
-        <table *ngIf="recentActivities && recentActivities.length > 0; else noData">
-          <thead>
-            <tr>
-              <th>Employee</th>
-              <th>Action</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let activity of recentActivities">
-              <td>{{ activity.name }}</td>
-              <td>{{ activity.action }}</td>
-              <td>{{ activity.time | date:'short' }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="timeline" *ngIf="recentActivities && recentActivities.length > 0; else noData">
+          <div class="timeline-item" *ngFor="let activity of recentActivities">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="activity-name">{{ activity.name }}</p>
+              <p class="activity-action">{{ activity.action }} on {{ activity.target }}</p>
+              <p class="activity-time">{{ activity.time | date:'short' }}</p>
+            </div>
+          </div>
+        </div>
 
         <ng-template #noData>
           <p style="color: #aaa;">No recent activity found</p>
@@ -100,7 +91,6 @@
       </div>
     </ng-container>
 
-    <!--  SHOW ANALYTICS -->
     <ng-container *ngIf="showAnalytics">
       <app-analytics></app-analytics>
     </ng-container>

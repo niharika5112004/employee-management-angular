@@ -51,16 +51,33 @@ h3 {
   color: #00F5D4;
 }
 
-/* ✅ FIXED CANVAS STYLING - This was breaking tooltips */
+
 .card canvas {
   width: 100% !important;
-  height: auto !important;           /* Let Chart.js control height */
-  max-height: 320px;                 /* Safe maximum height */
+  height: auto !important;           
+  max-height: 320px;                
   display: block;
   margin: 0 auto;
 }
 
-/* Optional: Nice hover glow effect on canvas */
+
 .card:hover canvas {
   filter: drop-shadow(0 0 12px rgba(0, 245, 212, 0.6));
+}
+h2, h3 {
+  color: var(--text-color) !important;
+}
+@media (max-width: 768px) {
+
+  .analytics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+
 }

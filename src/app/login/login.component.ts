@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { EmployeeService } from '../services/employee.service';
 
 @Component({
@@ -12,72 +11,47 @@ import { EmployeeService } from '../services/employee.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
-  role: string = 'user';
   errorMessage: string = '';
 
   constructor(
     private router: Router,
-    private http: HttpClient,
     private empService: EmployeeService
   ) {}
 
-  onLogin() {
-
-    // ================= ADMIN LOGIN =================
-    if (
-      this.email === 'admin@gmail.com' &&
-      this.password === 'admin123' &&
-      this.role === 'admin'
-    ) {
-      localStorage.setItem('role', 'admin');
-      alert('Admin Login Success ✅');
-
-      this.logLoginToBackend();
-
-      this.empService.triggerRefresh();
-
-      // ✅ ONLY CHANGE HERE
-      this.router.navigate(['/dashboard']);
-    }
-
-    // ================= USER LOGIN =================
-    else if (
-      this.email === 'user@gmail.com' &&
-      this.password === 'user123' &&
-      this.role === 'user'
-    ) {
-      localStorage.setItem('role', 'user');
-      alert('User Login Success ✅');
-
-      this.logLoginToBackend();
-
-      this.empService.triggerRefresh();
-
-      // ✅ ONLY CHANGE HERE
-      this.router.navigate(['/dashboard']);
-    }
-
-    // ================= INVALID =================
-    else {
-      this.errorMessage = 'Invalid credentials!';
+  ngOnInit() {
+    if (!localStorage.getItem('token')) {
+      localStorage.clear();
     }
   }
 
-  // 🔥 Log login into backend
-  private logLoginToBackend() {
-    const loginData = {
-      email: this.email,
-      role: this.role
-    };
+  onLogin() {
 
-    this.http.post('http://localhost:3000/login', loginData)
-      .subscribe({
-        next: () => console.log('Login logged in DB ✅'),
-        error: (err) => console.error('Login logging failed:', err)
-      });
+    // ✅ USING SERVICE INSTEAD OF HARDCODED URL
+    this.empService.login({
+      email: this.email,
+      password: this.password
+    }).subscribe({
+
+      next: (res: any) => {
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('role', res.role);
+
+        const expiration = new Date().getTime() + 60 * 60 * 1000;
+        localStorage.setItem('token_expiration', expiration.toString());
+
+        alert('Login Successful ✅');
+
+        this.empService.triggerRefresh();
+        this.router.navigate(['/dashboard']);
+      },
+
+      error: (err) => {
+        this.errorMessage = err.error?.message || 'Login failed';
+      }
+    });
   }
 }

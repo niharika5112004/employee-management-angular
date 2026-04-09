@@ -64,7 +64,10 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
       maintainAspectRatio: true,
       interaction,
       plugins: {
-        legend: { position: 'bottom', labels: { color: '#ccc', padding: 20, usePointStyle: true } },
+        legend: {
+          position: 'bottom',
+          labels: { color: '#ccc', padding: 20, usePointStyle: true }
+        },
         tooltip: {
           ...tooltipBase,
           callbacks: {
@@ -87,7 +90,8 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
         tooltip: {
           ...tooltipBase,
           callbacks: {
-            label: (context: any) => `Avg Salary: ₹${Number(context.raw).toLocaleString('en-IN')}`
+            label: (context: any) =>
+              `Avg Salary: ₹${Number(context.raw).toLocaleString('en-IN')}`
           }
         }
       }
@@ -102,7 +106,8 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
         tooltip: {
           ...tooltipBase,
           callbacks: {
-            label: (context: any) => `Employees Joined: ${context.raw}`
+            label: (context: any) =>
+              `Employees Joined: ${context.raw}`
           }
         }
       }
@@ -110,9 +115,11 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
   }
 
   loadCharts(): void {
-    // PIE
-    this.employeeService.getDesignationStats().subscribe((data: any[]) => {
-      const labels = data.map(d => {
+
+    // ✅ PIE CHART
+    this.employeeService.getDesignationStats().subscribe((data: any) => {
+
+      const labels = data.map((d: any) => {
         let role = (d.designation || 'Unknown').toLowerCase().trim();
         if (role === 'devloper') role = 'developer';
         return role.charAt(0).toUpperCase() + role.slice(1);
@@ -121,38 +128,50 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
       this.designationData = {
         labels,
         datasets: [{
-          data: data.map(d => Number(d.count) || 0),
-          backgroundColor: ['#00F5D4','#FF006E','#8338EC','#FFBE0B','#3A86FF','#FB5607','#06D6A0','#EF476F','#118AB2','#FFD166'],
+          data: data.map((d: any) => Number(d.count) || 0),
+          backgroundColor: [
+            '#00F5D4','#FF006E','#8338EC','#FFBE0B','#3A86FF',
+            '#FB5607','#06D6A0','#EF476F','#118AB2','#FFD166'
+          ],
           borderWidth: 2,
           borderColor: '#0f172a'
         }]
       };
+
       this.cdr.detectChanges();
       setTimeout(() => this.pieChart?.chart?.update(), 50);
     });
 
-    // BAR
-    this.employeeService.getDepartmentSalaryStats().subscribe((data: any[]) => {
+    // ✅ BAR CHART
+    this.employeeService.getDepartmentSalaryStats().subscribe((data: any) => {
+
       this.salaryData = {
-        labels: data.map(d => d.department || 'Unknown'),
+        labels: data.map((d: any) => d.department || 'Unknown'),
         datasets: [{
           label: 'Avg Salary',
-          data: data.map(d => Number(d.avgSalary) || 0),
+          data: data.map((d: any) => Number(d.avgSalary) || 0),
           backgroundColor: '#00F5D4',
           borderRadius: 8
         }]
       };
+
       this.cdr.detectChanges();
       setTimeout(() => this.barChart?.chart?.update(), 50);
     });
 
-    // LINE
-    this.employeeService.getEmployeeGrowth().subscribe((data: any[]) => {
+    // ✅ LINE CHART (FIXED)
+    this.employeeService.getEmployeeGrowth().subscribe((data: any) => {
+
       this.growthData = {
-        labels: data.map(d => new Date(d.date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })),
+        labels: data.map((d: any) =>
+          new Date(d.date).toLocaleDateString('en-IN', {
+            day: '2-digit',
+            month: 'short'
+          })
+        ),
         datasets: [{
           label: 'Employees Joined',
-          data: data.map(d => Number(d.count) || 0),
+          data: data.map((d: any) => Number(d.count) || 0),
           borderColor: '#00F5D4',
           backgroundColor: 'rgba(0,245,212,0.15)',
           fill: true,
@@ -160,6 +179,7 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
           pointRadius: 4
         }]
       };
+
       this.cdr.detectChanges();
       setTimeout(() => this.lineChart?.chart?.update(), 50);
     });

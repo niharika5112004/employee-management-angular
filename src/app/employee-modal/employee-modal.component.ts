@@ -16,16 +16,30 @@ export class EmployeeModalComponent implements OnInit {
   @Output() onSave = new EventEmitter<any>();
 
   profileForm: FormGroup;
+  submitted = false;
 
   constructor(private fb: FormBuilder) {
     this.profileForm = this.fb.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
+
+      // 📧 Email → required + valid format
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
+
+      // 📱 Phone → required + exactly 10 digits
+      phone: ['', [
+        Validators.required,
+        Validators.pattern(/^[0-9]{10}$/)
+      ]],
+
       department: ['', Validators.required],
       designation: ['', Validators.required],
-      salary: ['', Validators.required]
+
+      // 💰 Salary → required + must be >= 100
+      salary: ['', [
+        Validators.required,
+        Validators.min(100)
+      ]]
     });
   }
 
@@ -36,12 +50,23 @@ export class EmployeeModalComponent implements OnInit {
   }
 
   submitForm() {
-    if (this.profileForm.invalid) return;
-    this.onSave.emit(this.profileForm.value); // emit instantly
+    this.submitted = true;
+
+    if (this.profileForm.invalid) {
+      this.profileForm.markAllAsTouched(); // 🔥 show all errors on submit
+      return;
+    }
+
+    this.onSave.emit(this.profileForm.value);
     this.closeModal();
   }
 
   closeModal() {
     this.onClose.emit();
+  }
+
+  // 🔥 OPTIONAL: helper for duplicate email (use when backend says duplicate)
+  setDuplicateEmailError() {
+    this.profileForm.get('email')?.setErrors({ duplicate: true });
   }
 }

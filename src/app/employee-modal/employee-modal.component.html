@@ -3,36 +3,103 @@
     <h2>{{ employeeData ? 'Update Employee' : 'Add Employee' }}</h2>
 
     <form [formGroup]="profileForm" (ngSubmit)="submitForm()">
+
+      <!-- First Name -->
       <div class="form-group">
         <input type="text" formControlName="first_name" placeholder="First Name">
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('first_name')?.touched) && profileForm.get('first_name')?.errors?.['required']">
+          First name is required
+        </small>
       </div>
+
+      <!-- Last Name -->
       <div class="form-group">
         <input type="text" formControlName="last_name" placeholder="Last Name">
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('last_name')?.touched) && profileForm.get('last_name')?.errors?.['required']">
+          Last name is required
+        </small>
       </div>
+
+      <!-- Email -->
       <div class="form-group">
         <input type="email" formControlName="email" placeholder="Email">
+
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('email')?.touched) && profileForm.get('email')?.errors?.['required']">
+          Email is required
+        </small>
+
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('email')?.touched) && profileForm.get('email')?.errors?.['email']">
+          Enter a valid email (example: abc@gmail.com)
+        </small>
+
+        <small class="error"
+          *ngIf="profileForm.get('email')?.errors?.['duplicate']">
+          This email already exists
+        </small>
       </div>
+
+      <!-- Phone -->
       <div class="form-group">
         <input type="text" formControlName="phone" placeholder="Phone">
+
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('phone')?.touched) && profileForm.get('phone')?.errors?.['required']">
+          Phone number is required
+        </small>
+
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('phone')?.touched) && profileForm.get('phone')?.errors?.['pattern']">
+          Phone number must be exactly 10 digits
+        </small>
       </div>
+
+      <!-- Department -->
       <div class="form-group">
         <input type="text" formControlName="department" placeholder="Department">
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('department')?.touched) && profileForm.get('department')?.errors?.['required']">
+          Department is required
+        </small>
       </div>
+
+      <!-- Designation -->
       <div class="form-group">
         <input type="text" formControlName="designation" placeholder="Designation">
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('designation')?.touched) && profileForm.get('designation')?.errors?.['required']">
+          Designation is required
+        </small>
       </div>
+
+      <!-- Salary -->
       <div class="form-group">
         <input type="number" formControlName="salary" placeholder="Salary">
+
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('salary')?.touched) && profileForm.get('salary')?.errors?.['required']">
+          Salary is required
+        </small>
+
+        <small class="error"
+          *ngIf="(submitted || profileForm.get('salary')?.touched) && profileForm.get('salary')?.errors?.['min']">
+          Salary must be greater than 100
+        </small>
       </div>
 
       <div class="button-group">
         <button type="submit" class="save-btn">
           {{ employeeData ? 'Update' : 'Add' }}
         </button>
+
         <button type="button" class="cancel-btn" (click)="closeModal()">
           Cancel
         </button>
       </div>
+
     </form>
   </div>
 </div>
