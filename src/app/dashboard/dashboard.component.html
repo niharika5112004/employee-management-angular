@@ -11,28 +11,27 @@
 
     <ul>
       <li (click)="goToDashboard()">
-        <span class="icon">🏠</span>
+        <span class="material-icons">dashboard</span>
         Dashboard
       </li>
 
       <li (click)="goToAnalytics()">
-        <span class="icon">📊</span>
+        <span class="material-icons">bar_chart</span>
         Analytics
       </li>
 
       <li (click)="goToEmployees()">
-        <span class="icon">👥</span>
+        <span class="material-icons">groups</span>
         Employee Details
       </li>
 
-      
       <li *ngIf="isAdmin" (click)="goToAddUser()">
-        <span class="icon">➕</span>
+        <span class="material-icons">person_add</span>
         Add User
       </li>
 
       <li (click)="logout()">
-        <span class="icon">🚪</span>
+        <span class="material-icons">logout</span>
         Logout
       </li>
     </ul>
