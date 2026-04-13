@@ -23,10 +23,9 @@ export class EmployeeModalComponent implements OnInit {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
 
-      // 📧 Email → required + valid format
       email: ['', [Validators.required, Validators.email]],
 
-      // 📱 Phone → required + exactly 10 digits
+      
       phone: ['', [
         Validators.required,
         Validators.pattern(/^[0-9]{10}$/)
@@ -35,7 +34,7 @@ export class EmployeeModalComponent implements OnInit {
       department: ['', Validators.required],
       designation: ['', Validators.required],
 
-      // 💰 Salary → required + must be >= 100
+     
       salary: ['', [
         Validators.required,
         Validators.min(100)
@@ -53,7 +52,7 @@ export class EmployeeModalComponent implements OnInit {
     this.submitted = true;
 
     if (this.profileForm.invalid) {
-      this.profileForm.markAllAsTouched(); // 🔥 show all errors on submit
+      this.profileForm.markAllAsTouched(); 
       return;
     }
 
@@ -65,7 +64,6 @@ export class EmployeeModalComponent implements OnInit {
     this.onClose.emit();
   }
 
-  // 🔥 OPTIONAL: helper for duplicate email (use when backend says duplicate)
   setDuplicateEmailError() {
     this.profileForm.get('email')?.setErrors({ duplicate: true });
   }

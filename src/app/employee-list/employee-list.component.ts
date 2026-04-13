@@ -91,7 +91,8 @@ export class EmployeeListComponent implements OnInit {
 
   handleSave(employee: any) {
     if (employee.id) {
-      // ✅ FIXED: correct arguments
+      
+      
       this.employeeService.updateEmployee(employee.id, employee).subscribe(() => {
         this.loadEmployees();
       });
@@ -111,7 +112,6 @@ export class EmployeeListComponent implements OnInit {
     }
   }
 
-  // ✅ BACK BUTTON FUNCTION
   goBack() {
     this.router.navigate(['/dashboard']);
   }

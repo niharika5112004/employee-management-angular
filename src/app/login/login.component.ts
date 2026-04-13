@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
 
-    // ✅ USING SERVICE INSTEAD OF HARDCODED URL
+   
     this.empService.login({
       email: this.email,
       password: this.password

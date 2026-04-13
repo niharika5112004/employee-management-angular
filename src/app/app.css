@@ -1,8 +1,7 @@
-/* Toggle button styling */
 .theme-toggle {
   position: fixed;
   top: 20px;
-  right: 20px;
+  right:60px !important;
   z-index: 1000;
 }
 
@@ -45,7 +44,7 @@ input:checked + .slider::before {
   transform: translateX(32px);
 }
 
-/* Icons */
+
 .icon-moon, .icon-sun {
   position: absolute;
   top: 50%;

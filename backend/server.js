@@ -17,6 +17,16 @@ const pool = new Pool({
   }
 });
 
+
+app.get('/test-db', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.json({ success: true, time: result.rows[0] });
+  } catch (err) {
+    res.json({ success: false, error: err.message });
+  }
+});
+
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -77,7 +87,7 @@ app.post('/login', async (req, res) => {
     res.json({ token: token, role: user.role });
 
   } catch (err) {
-    console.error(err);
+    console.error('LOGIN ERROR:', err.message, err.stack);
     res.status(500).json({ message: err.message });
   }
 });
@@ -248,7 +258,7 @@ app.get('/employees/growth', authenticateToken, async (req, res) => {
   res.json(result.rows);
 });
 
-// ✅ Serve Angular frontend
+
 app.use(express.static(path.join(__dirname, 'dist/angular-tut/browser')));
 
 app.get('/{*path}', (req, res) => {
@@ -256,5 +266,5 @@ app.get('/{*path}', (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('Server running on port 3000 🚀');
+  console.log('Server running on port 3000 ');
 });

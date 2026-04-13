@@ -16,7 +16,7 @@ export class RoleGuard implements CanActivate {
     if (userRole === expectedRole) {
       return true;
     } else {
-      alert('Access Denied! Admins only.'); // ✅ added alert
+      alert('Access Denied! Admins only.');
       this.router.navigate(['/dashboard']);
       return false;
     }

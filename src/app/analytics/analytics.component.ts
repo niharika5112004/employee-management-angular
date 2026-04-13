@@ -116,7 +116,7 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
 
   loadCharts(): void {
 
-    // ✅ PIE CHART
+
     this.employeeService.getDesignationStats().subscribe((data: any) => {
 
       const labels = data.map((d: any) => {
@@ -142,7 +142,7 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
       setTimeout(() => this.pieChart?.chart?.update(), 50);
     });
 
-    // ✅ BAR CHART
+   
     this.employeeService.getDepartmentSalaryStats().subscribe((data: any) => {
 
       this.salaryData = {
@@ -159,7 +159,7 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
       setTimeout(() => this.barChart?.chart?.update(), 50);
     });
 
-    // ✅ LINE CHART (FIXED)
+   
     this.employeeService.getEmployeeGrowth().subscribe((data: any) => {
 
       this.growthData = {

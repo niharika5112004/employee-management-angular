@@ -1,9 +1,8 @@
 <div class="employee-page">
 
-  <!-- HEADER -->
+ 
   <div class="header">
 
-    <!-- 🔙 Back Button -->
     <button class="back-btn" (click)="goBack()">← Back</button>
 
     <h2>Employee List</h2>
@@ -16,13 +15,11 @@
       class="search-box" 
     />
 
-    <!-- Add Employee button (admin only) -->
     <button class="add-btn" *ngIf="isAdmin" (click)="openAddModal()">
       + Add Employee
     </button>
   </div>
 
-  <!-- MODAL -->
   <app-employee-modal
     *ngIf="showModal"
     [employeeData]="selectedEmployee"
@@ -30,7 +27,7 @@
     (onSave)="handleSave($event)">
   </app-employee-modal>
 
-  <!-- DATA GRID -->
+ 
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort class="employee-table">
 

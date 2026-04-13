@@ -15,7 +15,7 @@ import { Subscription, interval } from 'rxjs';
 export class DashboardComponent implements OnInit, OnDestroy {
 
   role: string = '';
-  isAdmin: boolean = false; // ✅ ADDED
+  isAdmin: boolean = false; 
 
   totalEmployees: number = 0;
   loginsToday: number = 0;
@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.role = localStorage.getItem('role') || '';
 
-    this.isAdmin = this.role === 'admin'; // ✅ ADDED
+    this.isAdmin = this.role === 'admin'; 
 
     this.loadData();
 
@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.router.navigate(['/login']);
   }
 
-  // ✅ ADDED (for navigation)
+
   goToAddUser() {
     this.router.navigate(['/admin/add-user']);
   }

@@ -1,4 +1,4 @@
-/* ---------------- Container & Sidebar ---------------- */
+
 .container {
   display: flex;
   min-height: 100vh;
@@ -9,8 +9,8 @@
 
 .sidebar {
   width: 220px;
-  background: var(--sidebar-bg);   /* ✅ THEME CONTROLLED */
-  color: var(--sidebar-text);      /* ✅ THEME CONTROLLED */
+  background: var(--sidebar-bg);  
+  color: var(--sidebar-text);      
   padding: 25px 15px;
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@
   align-items: center;
 }
 
-/* ---------------- Main Section ---------------- */
+
 .main {
   flex: 1;
   min-height: 100%;
@@ -96,7 +96,7 @@ body {
   margin-bottom: 30px;
 }
 
-/* ---------------- Dashboard Cards ---------------- */
+
 .cards-row {
   display: flex;
   gap: 20px;
@@ -133,7 +133,7 @@ body {
   box-shadow: 0 0 25px rgba(254, 107, 139, 0.7), 0 8px 25px rgba(0,0,0,0.6);
 }
 
-/* ---------------- Table Section ---------------- */
+
 .table-section {
   background: var(--card-bg, var(--bg-color));
   border-radius: 12px;
@@ -158,7 +158,6 @@ tbody tr:hover {
   background: var(--table-row-hover);
 }
 
-/* ---------------- Welcome Section ---------------- */
 .welcome-home {
   position: relative;
   width: 100%;
@@ -220,7 +219,6 @@ tbody tr:hover {
   }
 }
 
-/* ---------------- Timeline ---------------- */
 .timeline {
   position: relative;
   margin-left: 0;
@@ -243,7 +241,7 @@ tbody tr:hover {
   animation: fadeInUp 0.5s ease forwards;
 }
 
-/* Glowing main dot */
+
 .timeline-dot {
   position: absolute;
   left: -26px;
@@ -260,7 +258,7 @@ tbody tr:hover {
   z-index: 3;
 }
 
-/* 🔥 DOTTED GLOWING CONNECTION (ONLY CHANGE) */
+
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -287,7 +285,7 @@ tbody tr:hover {
   transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 🔥 RECTANGLE GLOW ON HOVER (ONLY CHANGE) */
+
 .timeline-content:hover {
   transform: translateY(-2px);
   background: var(--timeline-hover-bg);
@@ -324,7 +322,6 @@ tbody tr:hover {
   }
 }
 
-/* ---------------- Theme ---------------- */
 :root {
   --bg-color: #0f172a;
   --text-color: #ffffff;

@@ -1,6 +1,4 @@
-/* ========================= */
-/* EMPLOYEE PAGE STYLES */
-/* ========================= */
+
 
 .employee-page {
   min-height: 100vh;
@@ -11,9 +9,7 @@
   color: var(--text-color);
 }
 
-/* ========================= */
-/* HEADER */
-/* ========================= */
+
 
 .header {
   display: flex;
@@ -30,9 +26,6 @@
   margin: 0;
 }
 
-/* ========================= */
-/* SEARCH BOX */
-/* ========================= */
 
 .search-box {
   padding: 12px 16px;
@@ -52,9 +45,7 @@
   background-color: var(--input-bg);
 }
 
-/* ========================= */
-/* ADD BUTTON */
-/* ========================= */
+
 
 .add-btn {
   background: var(--add-btn-bg);
@@ -72,9 +63,6 @@
   transform: translateY(-2px) scale(1.05);
 }
 
-/* ========================= */
-/* TABLE CONTAINER */
-/* ========================= */
 
 .table-container {
   overflow-x: auto;
@@ -83,9 +71,7 @@
   background-color: var(--bg-color);
 }
 
-/* ========================= */
-/* TABLE STYLES - CENTER ALIGNED */
-/* ========================= */
+
 
 .employee-table {
   width: 100%;
@@ -95,7 +81,6 @@
   color: var(--text-color);
 }
 
-/* CENTER ALIGNMENT FOR BOTH HEADER AND CELLS */
 ::ng-deep .mat-mdc-header-cell,
 ::ng-deep .mat-mdc-cell {
   color: var(--text-color) !important;
@@ -104,10 +89,9 @@
   text-align: center !important;
   justify-content: center !important;
   align-items: center !important;
-  padding: 0 8px;                    /* Better spacing */
+  padding: 0 8px;                    
 }
 
-/* MOST IMPORTANT FIX: Angular Material Header Centering */
 ::ng-deep .mat-mdc-header-cell .mat-mdc-header-cell-wrapper {
   display: flex !important;
   justify-content: center !important;
@@ -115,21 +99,18 @@
   width: 100% !important;
 }
 
-/* Fix for sortable headers */
+
 ::ng-deep .mat-mdc-header-cell .mat-sort-header-container {
   display: flex !important;
   justify-content: center !important;
   width: 100% !important;
 }
 
-/* Hover effect */
 ::ng-deep .mat-mdc-row:hover {
   background: rgba(79, 172, 254, 0.2) !important;
 }
 
-/* ========================= */
-/* ACTION BUTTONS */
-/* ========================= */
+
 
 .edit-btn {
   background: var(--edit-btn-bg);
@@ -144,7 +125,7 @@
 }
 
 .back-btn {
-  background: #3b82f6;   /* 🔵 BLUE */
+  background: #3b82f6;   
   color: white;
   padding: 10px 20px;
   border-radius: 10px;
@@ -163,9 +144,7 @@
   background: #2563eb;
 }
 
-/* ========================= */
-/* PAGINATOR STYLES */
-/* ========================= */
+
 
 ::ng-deep .mat-mdc-paginator {
   background-color: var(--bg-color) !important;
@@ -177,7 +156,6 @@
   color: var(--text-color) !important;
 }
 
-/* Dropdown panel */
 ::ng-deep .mat-mdc-select-panel {
   background-color: var(--input-bg) !important;
   color: var(--text-color) !important;
@@ -187,9 +165,7 @@
   color: var(--text-color) !important;
 }
 
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
+
 
 @media (max-width: 900px) {
   .employee-page { 

@@ -1,4 +1,4 @@
-/* BACKDROP */
+
 .modal-backdrop {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -11,7 +11,6 @@
   padding: 10px;
 }
 
-/* MODAL CARD */
 .modal-card {
   background: #ffffff;
   padding: 30px;
@@ -22,7 +21,6 @@
   animation: slideIn 0.3s ease;
 }
 
-/* TITLE */
 .modal-card h2 {
   text-align: center;
   color: #1e293b;
@@ -31,7 +29,7 @@
   font-weight: 600;
 }
 
-/* FORM GROUPS */
+
 .form-group {
   margin-bottom: 15px;
   align-items: center;
@@ -41,7 +39,7 @@ input[type="text"],
 input[type="email"],
 input[type="number"] {
   width: 80%;
-  margin: 0 auto;      /* 🔥 centers horizontally */
+  margin: 0 auto;      
   display: block;    
   padding: 10px 12px;
   border-radius: 8px;
@@ -57,7 +55,6 @@ input:focus {
   box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
 }
 
-/* BUTTON GROUP */
 .button-group {
   display: flex;
   justify-content: flex-end;
@@ -65,7 +62,7 @@ input:focus {
   margin-top: 20px;
 }
 
-/* SAVE BUTTON */
+
 .save-btn {
   background: #22c55e;
   color: white;
@@ -82,7 +79,6 @@ input:focus {
   transform: translateY(-1px);
 }
 
-/* CANCEL BUTTON */
 .cancel-btn {
   background: #3b82f6;
   color: white;
@@ -100,14 +96,13 @@ input:focus {
 }
 .error {
   display: block;
-  width: 80%;        /* 🔥 same as input width */
-  margin: 4px auto 0; /* 🔥 centers exactly under input */
+  width: 80%;        
+  margin: 4px auto 0; 
   color: #ef4444;
   font-size: 12px;
-  text-align: left;  /* keeps text aligned nicely */
+  text-align: left; 
 }
 
-/* ANIMATIONS */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -118,7 +113,7 @@ input:focus {
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 600px) {
   .modal-card {
     padding: 20px;

@@ -7,8 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class EmployeeService {
 
-  // ✅ UPDATED BACKEND URL (Render)
-  private API = 'https://angular-backend-8p8x.onrender.com';
+  private API = 'https://angular-backend-1-s3vg.onrender.com';
 
   private refreshNeeded = new Subject<void>();
   refresh$ = this.refreshNeeded.asObservable();
@@ -24,7 +23,6 @@ export class EmployeeService {
     };
   }
 
-  // ✅ LOGIN METHOD ADDED
   login(data: any) {
     return this.http.post(`${this.API}/login`, data);
   }
