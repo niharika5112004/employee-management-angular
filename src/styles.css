@@ -7,7 +7,7 @@ body {
   color: var(--text-color);
 }
 
-/* ✅ Responsive container fix */
+
 .container,
 .main,
 .sidebar,
@@ -23,7 +23,7 @@ body {
   box-sizing: border-box;
 }
 
-/* ✅ Sidebar */
+
 .sidebar {
   width: 250px;
   position: fixed;
@@ -35,13 +35,11 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* ✅ Main content shift */
 .main {
   margin-left: 250px;
   transition: all 0.3s ease;
 }
 
-/* ✅ Mobile sidebar */
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
@@ -56,7 +54,7 @@ body {
   }
 }
 
-/* ✅ Header */
+
 .top-header {
   display: flex;
   justify-content: space-between;
@@ -64,7 +62,6 @@ body {
   padding: 10px 15px;
 }
 
-/* ✅ Menu button */
 .menu-btn {
   display: none;
   font-size: 22px;
@@ -86,7 +83,6 @@ body {
   }
 }
 
-/* ✅ Theme toggle */
 .theme-toggle-btn {
   border: none;
   border-radius: 50%;
@@ -105,7 +101,7 @@ body {
   opacity: 0.9;
 }
 
-/* ✅ Cards */
+
 .cards-row {
   display: flex;
   flex-wrap: wrap;
@@ -117,7 +113,7 @@ body {
   min-width: unset;
 }
 
-/* ✅ Table */
+
 .table-container {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -140,7 +136,6 @@ body {
   }
 }
 
-/* ✅ Inputs */
 input, select {
   background-color: var(--input-bg);
   color: var(--text-color);
@@ -150,7 +145,7 @@ input, select {
   padding: 6px 10px;
 }
 
-/* ✅ Buttons */
+
 button {
   transition: all 0.3s ease;
   color: var(--btn-text);
@@ -169,7 +164,6 @@ button {
   }
 }
 
-/* ✅ Action buttons */
 .add-btn {
   background: var(--add-btn-bg);
   color: white;
@@ -188,13 +182,12 @@ button {
   box-shadow: 0 0 10px rgba(255,0,0,0.6);
 }
 
-/* ✅ Media elements */
 img, iframe, video, canvas {
   max-width: 100%;
   height: auto;
 }
 
-/* ✅ Overlay for sidebar */
+
 .overlay {
   position: fixed;
   top: 0;
@@ -205,7 +198,6 @@ img, iframe, video, canvas {
   z-index: 999;
 }
 
-/* ✅ Angular Material fix */
 ::ng-deep .mat-mdc-header-cell,
 ::ng-deep .mat-mdc-cell {
   color: var(--text-color) !important;
@@ -215,7 +207,7 @@ img, iframe, video, canvas {
   background: rgba(79,172,254,0.2) !important;
 }
 
-/* ✅ Theme variables */
+
 body.dark-theme {
   --bg-color: #1e293b;
   --text-color: #f1f5f9;
@@ -240,7 +232,7 @@ body.light-theme {
   --delete-btn-bg: linear-gradient(135deg, #ff4d4d, #ff0000);
 }
 
-/* ✅ Modal spacing */
+
 .modal-backdrop {
   padding: 10px;
 }
